@@ -48,13 +48,19 @@ import static org.firstinspires.ftc.teamcode.roadrunner.drive.DriveConstants.kA;
 import static org.firstinspires.ftc.teamcode.roadrunner.drive.DriveConstants.kStatic;
 import static org.firstinspires.ftc.teamcode.roadrunner.drive.DriveConstants.kV;
 
-/*
- * Simple mecanum drive hardware implementation for REV hardware.
- */
 @Config
 public class SampleMecanumDrive extends MecanumDrive {
-    public static PIDCoefficients TRANSLATIONAL_PID = new PIDCoefficients(4, 0, 0);
-    public static PIDCoefficients HEADING_PID = new PIDCoefficients(4, 0, 0);
+
+    public static PIDCoefficients TRANSLATIONAL_PID = new PIDCoefficients(
+            4,
+            0,
+            0
+    );
+    public static PIDCoefficients HEADING_PID = new PIDCoefficients(
+            4,
+            0,
+            0
+    );
 
     public static double LATERAL_MULTIPLIER = 1;
 
@@ -69,7 +75,7 @@ public class SampleMecanumDrive extends MecanumDrive {
 
     private TrajectoryFollower follower;
 
-    private DcMotorEx leftFront, leftRear, rightRear, rightFront;
+    private DcMotorEx fl, bl, br, fr;
     private List<DcMotorEx> motors;
 
     private BNO055IMU imu;
@@ -77,6 +83,15 @@ public class SampleMecanumDrive extends MecanumDrive {
 
     public SampleMecanumDrive(HardwareMap hardwareMap) {
         super(kV, kA, kStatic, TRACK_WIDTH, TRACK_WIDTH, LATERAL_MULTIPLIER);
+
+        fl = hardwareMap.get(DcMotorEx.class, "FL");
+        fr = hardwareMap.get(DcMotorEx.class, "FR");
+        bl = hardwareMap.get(DcMotorEx.class, "BL");
+        br = hardwareMap.get(DcMotorEx.class, "BR");
+
+        fr.setDirection(DcMotorSimple.Direction.REVERSE);
+        br.setDirection(DcMotorSimple.Direction.REVERSE);
+
 
         follower = new HolonomicPIDVAFollower(TRANSLATIONAL_PID, TRANSLATIONAL_PID, HEADING_PID,
                 new Pose2d(0.5, 0.5, Math.toRadians(5.0)), 0.5);
@@ -117,15 +132,8 @@ public class SampleMecanumDrive extends MecanumDrive {
         // For example, if +Y in this diagram faces downwards, you would use AxisDirection.NEG_Y.
         // BNO055IMUUtil.remapZAxis(imu, AxisDirection.NEG_Y);
 
-        leftFront = hardwareMap.get(DcMotorEx.class, "FL");
-        leftRear = hardwareMap.get(DcMotorEx.class, "BL");
-        rightRear = hardwareMap.get(DcMotorEx.class, "BR");
-        rightFront = hardwareMap.get(DcMotorEx.class, "FR");
-        
-        rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
-        rightRear.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        motors = Arrays.asList(leftFront, leftRear, rightRear, rightFront);
+        motors = Arrays.asList(fl, bl, br, fr);
 
         for (DcMotorEx motor : motors) {
             MotorConfigurationType motorConfigurationType = motor.getMotorType().clone();
@@ -290,10 +298,10 @@ public class SampleMecanumDrive extends MecanumDrive {
     @Override
     public void setMotorPowers(double v, double v1, double v2, double v3) {
         double power_constant = 1;
-        leftFront.setPower(v * power_constant);
-        leftRear.setPower(v1 * power_constant);
-        rightRear.setPower(v2 * power_constant);
-        rightFront.setPower(v3 * power_constant);
+        fl.setPower(v * power_constant);
+        bl.setPower(v1 * power_constant);
+        br.setPower(v2 * power_constant);
+        fr.setPower(v3 * power_constant);
     }
 
     @Override

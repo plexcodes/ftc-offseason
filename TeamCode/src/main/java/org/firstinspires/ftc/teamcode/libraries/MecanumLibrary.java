@@ -15,6 +15,7 @@ public class MecanumLibrary {
         fr = opMode.hardwareMap.get(DcMotor.class, "FR");
         bl = opMode.hardwareMap.get(DcMotor.class, "BL");
         br = opMode.hardwareMap.get(DcMotor.class, "BR");
+
         fr.setDirection(DcMotorSimple.Direction.REVERSE);
         br.setDirection(DcMotorSimple.Direction.REVERSE);
     }
@@ -28,10 +29,10 @@ public class MecanumLibrary {
                 (x + y - t)
         });
 
-        fl.setPower(targetPower[0] * power * 0.35);
-        fr.setPower(targetPower[1] * power * 0.35);
-        bl.setPower(targetPower[2] * power * 0.35);
-        br.setPower(targetPower[3] * power * 0.35);
+        fl.setPower(targetPower[0] * power);
+        fr.setPower(targetPower[1] * power);
+        bl.setPower(targetPower[2] * power);
+        br.setPower(targetPower[3] * power);
 
     }
 

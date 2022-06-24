@@ -21,7 +21,7 @@ public class TrajectoryTest extends LinearOpMode {
                 .build();
 
         drive.followTrajectory(traj);
-        sleep(1000);
+        sleep(500);
 
         drive.followTrajectory(
                 drive.trajectoryBuilder(traj.end())
