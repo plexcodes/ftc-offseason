@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.CRI.OpenCV;
 import com.acmerobotics.dashboard.config.Config;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.CRI.mechanisms.IntakeMechanism;
+import org.firstinspires.ftc.teamcode.CRI.Mechanisms.IntakeMechanism;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.Scalar;
