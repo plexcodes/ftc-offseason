@@ -1,6 +1,6 @@
-package org.firstinspires.ftc.teamcode.CRI.RobotCode.Tests;
+package org.firstinspires.ftc.teamcode.CRI.Static;
 
-public class ProductOfTwoFunction {
+public class ProductOfTwo {
 
 /**
  * @param a - the first factor

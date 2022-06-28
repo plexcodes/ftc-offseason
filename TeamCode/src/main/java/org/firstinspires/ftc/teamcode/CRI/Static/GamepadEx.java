@@ -10,7 +10,6 @@ public class GamepadEx {
 
 	private com.qualcomm.robotcore.hardware.Gamepad gamepad;
 
-
 	/*
 	Digital input:
 	0	START
@@ -36,6 +35,7 @@ public class GamepadEx {
 	4	TRIGGER_LEFT
 	5	TRIGGER_RIGHT
 	*/
+
 	private boolean[] buttonState = new boolean[15];
 	private boolean[] buttonDown = new boolean[15];
 	private boolean[] buttonUp = new boolean[15];

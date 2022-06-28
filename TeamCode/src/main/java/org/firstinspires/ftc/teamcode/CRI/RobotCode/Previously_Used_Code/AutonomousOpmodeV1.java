@@ -12,8 +12,6 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.CRI.Roadrunner.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.CRI.Roadrunner.util.AssetsTrajectoryManager;
-import org.firstinspires.ftc.teamcode.CRI.Mechanisms.IntakeMechanism;
-import org.firstinspires.ftc.teamcode.CRI.Mechanisms.OuttakeMechanism;
 import org.firstinspires.ftc.teamcode.CRI.Static.PoseStorage;
 
 @Disabled

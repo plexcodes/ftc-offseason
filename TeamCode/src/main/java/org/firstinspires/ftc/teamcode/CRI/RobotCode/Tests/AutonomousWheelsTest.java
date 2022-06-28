@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.CRI.RobotCode.Previously_Used_Code;
+package org.firstinspires.ftc.teamcode.CRI.RobotCode.Tests;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 @Disabled
 @TeleOp
-public class AutonomousWheelTest extends OpMode {
+public class AutonomousWheelsTest extends OpMode {
     @Override
     public void init() {
 

@@ -10,8 +10,6 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.CRI.Mechanisms.Mecanum;
 import org.firstinspires.ftc.teamcode.CRI.Roadrunner.drive.SampleMecanumDrive;
-import org.firstinspires.ftc.teamcode.CRI.Mechanisms.IntakeMechanism;
-import org.firstinspires.ftc.teamcode.CRI.Mechanisms.OuttakeMechanism;
 
 import java.util.concurrent.atomic.AtomicReference;
 

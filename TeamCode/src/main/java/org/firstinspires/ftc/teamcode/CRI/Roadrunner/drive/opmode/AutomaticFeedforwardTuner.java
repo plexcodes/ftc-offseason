@@ -62,7 +62,7 @@ public class AutomaticFeedforwardTuner extends LinearOpMode {
 
         telemetry.clearAll();
         telemetry.addLine("Would you like to fit kStatic?");
-        telemetry.addLine("Press (Y/Δ) for ProductOfTwoFunction, (B/O) for no");
+        telemetry.addLine("Press (Y/Δ) for ProductOfTwo, (B/O) for no");
         telemetry.update();
 
         boolean fitIntercept = false;
@@ -143,7 +143,7 @@ public class AutomaticFeedforwardTuner extends LinearOpMode {
                     rampResult.kStatic, rampResult.rSquare));
         }
         telemetry.addLine("Would you like to fit kA?");
-        telemetry.addLine("Press (Y/Δ) for ProductOfTwoFunction, (B/O) for no");
+        telemetry.addLine("Press (Y/Δ) for ProductOfTwo, (B/O) for no");
         telemetry.update();
 
         boolean fitAccelFF = false;

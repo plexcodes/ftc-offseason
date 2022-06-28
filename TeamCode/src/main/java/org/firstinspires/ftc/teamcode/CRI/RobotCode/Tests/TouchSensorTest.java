@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.CRI.RobotCode.Previously_Used_Code;
+package org.firstinspires.ftc.teamcode.CRI.RobotCode.Tests;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -18,7 +18,6 @@ public class TouchSensorTest extends OpMode {
         touchSensor1.setMode(DigitalChannel.Mode.INPUT);
         touchSensor2.setMode(DigitalChannel.Mode.INPUT);
         touchSensor3.setMode(DigitalChannel.Mode.INPUT);
-
     }
 
     @Override
@@ -26,6 +25,5 @@ public class TouchSensorTest extends OpMode {
         telemetry.addData("touchSensor1", touchSensor1.getState()? "true": "false");
         telemetry.addData("touchSensor2", touchSensor2.getState()? "true": "false");
         telemetry.addData("touchSensor3", touchSensor3.getState()? "true": "false");
-
     }
 }
