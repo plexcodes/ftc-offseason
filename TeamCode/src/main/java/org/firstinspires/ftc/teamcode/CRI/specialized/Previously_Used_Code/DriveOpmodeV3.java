@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.CRI.specialized.prev;
+package org.firstinspires.ftc.teamcode.CRI.specialized.Previously_Used_Code;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -6,13 +6,12 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
-import org.firstinspires.ftc.teamcode.CRI.GamepadEx;
 import org.firstinspires.ftc.teamcode.CRI.Mecanum;
 import org.firstinspires.ftc.teamcode.CRI.mechanisms.OuttakeMechanism;
 
 @Disabled
 @TeleOp()
-public class TeleOpV3 extends OpMode {
+public class DriveOpmodeV3 extends OpMode {
 
 	// Gamepad 1
 	// left stick, triggers - movement

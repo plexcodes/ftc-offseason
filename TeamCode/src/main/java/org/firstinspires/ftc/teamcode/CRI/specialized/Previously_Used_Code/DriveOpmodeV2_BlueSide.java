@@ -1,11 +1,10 @@
-package org.firstinspires.ftc.teamcode.CRI.specialized.prev;
+package org.firstinspires.ftc.teamcode.CRI.specialized.Previously_Used_Code;
 
 import static org.firstinspires.ftc.teamcode.CRI.Outtake.SERVO_LOADING;
 
 import android.annotation.SuppressLint;
 import android.util.Log;
 
-import com.qualcomm.hardware.lynx.commands.standard.LynxSetModuleLEDColorCommand;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -17,10 +16,8 @@ import org.firstinspires.ftc.teamcode.CRI.Mecanum;
 import org.firstinspires.ftc.teamcode.CRI.Outtake;
 import org.firstinspires.ftc.teamcode.CRI.mechanisms.FreightSensor;
 
-import java.util.Arrays;
-
 @TeleOp(name = "TeleOp Blue", group = "0")
-public class TeleOpV2_Blue extends OpMode {
+public class DriveOpmodeV2_BlueSide extends OpMode {
 
     // Gamepad 1
     // left stick, triggers - movement

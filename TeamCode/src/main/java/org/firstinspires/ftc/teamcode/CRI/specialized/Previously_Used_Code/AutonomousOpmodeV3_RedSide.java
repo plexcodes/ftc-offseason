@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.CRI.specialized.prev;
+package org.firstinspires.ftc.teamcode.CRI.specialized.Previously_Used_Code;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
@@ -26,7 +26,7 @@ import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 @Disabled
 @Autonomous(name = "Autonomie Red", group = "0prod")
-public class AutoOpV3_Red extends AutonomousOpMode {
+public class AutonomousOpmodeV3_RedSide extends AutonomousOpMode {
 
     Trajectory start_to_carousel, carousel_to_hub, warehouse_to_hub_c1, hub_to_warehouse_c1,
         warehouse_to_hub_c2, hub_to_duck, duck_to_hub, hub_to_park;

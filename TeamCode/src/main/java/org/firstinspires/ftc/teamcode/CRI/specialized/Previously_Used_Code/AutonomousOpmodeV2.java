@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.CRI.specialized.prev;
+package org.firstinspires.ftc.teamcode.CRI.specialized.Previously_Used_Code;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
@@ -21,7 +21,7 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 @Disabled
 @Config
 @Autonomous
-public class AutoOpV2 extends LinearOpMode {
+public class AutonomousOpmodeV2 extends LinearOpMode {
 
 
 	enum eAutoState {

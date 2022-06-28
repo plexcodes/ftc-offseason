@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.CRI.specialized.prev;
+package org.firstinspires.ftc.teamcode.CRI.specialized.Previously_Used_Code;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
@@ -11,7 +11,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.CRI.RR.drive.SampleMecanumDrive;
-import org.firstinspires.ftc.teamcode.CRI.RR.trajectorysequence.TrajectorySequence;
 import org.firstinspires.ftc.teamcode.CRI.RR.util.AssetsTrajectoryManager;
 import org.firstinspires.ftc.teamcode.CRI.mechanisms.IntakeMechanism;
 import org.firstinspires.ftc.teamcode.CRI.mechanisms.OuttakeMechanism;
@@ -20,7 +19,7 @@ import org.firstinspires.ftc.teamcode.CRI.statics.PoseStorage;
 @Disabled
 @Config
 @Autonomous
-public class AutoOpV1 extends LinearOpMode {
+public class AutonomousOpmodeV1 extends LinearOpMode {
 
     enum eAutoState {
         START_TO_CAROUSEL,

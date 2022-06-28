@@ -1,10 +1,7 @@
-package org.firstinspires.ftc.teamcode.CRI.specialized.prev;
+package org.firstinspires.ftc.teamcode.CRI.specialized.Previously_Used_Code;
 
 import com.acmerobotics.roadrunner.control.PIDFController;
-import com.acmerobotics.roadrunner.drive.MecanumDrive;
-import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
-import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -12,17 +9,15 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.CRI.Mecanum;
-import org.firstinspires.ftc.teamcode.CRI.RR.drive.DriveConstants;
 import org.firstinspires.ftc.teamcode.CRI.RR.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.CRI.mechanisms.IntakeMechanism;
 import org.firstinspires.ftc.teamcode.CRI.mechanisms.OuttakeMechanism;
 
-import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
 @Disabled
 @TeleOp(name = "TeleOp Version 0.1")
-public class TeleOpV1 extends OpMode {
+public class DriveOpmodeV1 extends OpMode {
 
 //    SampleMecanumDrive drive;
     Mecanum drive;

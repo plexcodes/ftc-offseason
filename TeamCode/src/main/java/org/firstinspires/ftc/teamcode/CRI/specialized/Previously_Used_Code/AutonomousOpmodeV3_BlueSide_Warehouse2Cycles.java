@@ -1,7 +1,6 @@
-package org.firstinspires.ftc.teamcode.CRI.specialized.prev;
+package org.firstinspires.ftc.teamcode.CRI.specialized.Previously_Used_Code;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
-import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
@@ -28,8 +27,8 @@ import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 @Disabled
-@Autonomous(name = "Autonomie Red Warehouse", group = "0prod")
-public class AutoOpV3_Red_W extends AutonomousOpMode {
+@Autonomous(name = "Autonomie Blue Warehouse 2 Cicluri", group = "0prod")
+public class AutonomousOpmodeV3_BlueSide_Warehouse2Cycles extends AutonomousOpMode {
 
     Trajectory start_to_carousel, carousel_to_hub, warehouse_to_hub_c1, hub_to_warehouse_c1,
         warehouse_to_hub_c2, hub_to_duck, duck_to_hub, hub_to_park;
@@ -40,57 +39,36 @@ public class AutoOpV3_Red_W extends AutonomousOpMode {
 
     Outtake.Level preloadLevel = Outtake.Level.high;
     private Trajectory start_to_hub;
+    private Trajectory hub_to_warehouse_c2;
 
 
     @Override
     protected void precompileTrajectories() {
-        PoseStorage.poseEstimate = new Pose2d(12.00, -63.00, Math.toRadians(90));
+        PoseStorage.poseEstimate = new Pose2d(12.00, 63.00, Math.toRadians(-90));
 
         // !!!! de inlocuit
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
-        start_to_carousel = drive.trajectoryBuilder(PoseStorage.poseEstimate, Math.toRadians(90))
-            .splineTo(new Vector2d(-61.00, -60.00), Math.toRadians(180))
-            .build();
+        start_to_carousel = AssetsTrajectoryManager.load("blue-start_to_carousel");
 
-        carousel_to_hub = drive.trajectoryBuilder(new Pose2d(-61, -60, Math.toRadians(180)), Math.toRadians(0))
-            .splineTo(new Vector2d(-12.00, -42.00), Math.toRadians(90))
-            .build();
+        carousel_to_hub = AssetsTrajectoryManager.load("blue-carousel_to_hub");
 
-        hub_to_warehouse_c1 = drive.trajectoryBuilder(new Pose2d(-12.00, -42.00, Math.toRadians(-90)), Math.toRadians(-90))
-            .splineToSplineHeading(new Pose2d(17.00, -65.70, Math.toRadians(0)), Math.toRadians(0))
-            .lineToLinearHeading(new Pose2d(43.00, -65.70, Math.toRadians(0)))
-            .build();
+        hub_to_warehouse_c1 = AssetsTrajectoryManager.load("blue-hub_to_warehouse_c1");
 
-        warehouse_to_hub_c1 = drive.trajectoryBuilder(new Pose2d(43.00, -65.70, Math.toRadians(0)), Math.toRadians(180))
-            .lineToConstantHeading(new Vector2d(17.00, -65.70))
-            .splineTo(new Vector2d(-12.00, -42.00), Math.toRadians(90))
-            .build();
+        hub_to_warehouse_c2 = AssetsTrajectoryManager.load("blue-hub_to_warehouse_c2");
 
-        warehouse_to_hub_c2 = drive.trajectoryBuilder(new Pose2d(43.00, -65.70, Math.toRadians(0)), Math.toRadians(190))
-            .splineToConstantHeading(new Vector2d(23.00, -70.70), Math.toRadians(180))
-            .splineTo(new Vector2d(-12.00, -45.00), Math.toRadians(90))
-            .build();
+        warehouse_to_hub_c1 = AssetsTrajectoryManager.load("blue-warehouse_to_hub_c1");
 
-        hub_to_duck = AssetsTrajectoryManager.load("hub_to_duck_v2");
-//            drive.trajectoryBuilder(new Pose2d(-12.00, -43.00, Math.toRadians(-90)), Math.toRadians(-90))
-//            .lineToConstantHeading(new Vector2d(-12.00, -50.00))
-//            .lineToSplineHeading(new Pose2d(-12.00, -42.00, Math.toRadians(10)))
-//            .splineToConstantHeading(new Vector2d(-6.00, -38.00), Math.toRadians(0))
-//            .lineToSplineHeading(new Pose2d(16.00, -38.00, Math.toRadians(10)))
-//            .build();
+        warehouse_to_hub_c2 = AssetsTrajectoryManager.load("blue-warehouse_to_hub_c2");
 
-        duck_to_hub = drive.trajectoryBuilder(new Pose2d(16.00, -38.00, Math.toRadians(15)), Math.toRadians(180))
-            .splineToLinearHeading(new Pose2d(7.00, -33.00, Math.toRadians(-35)), Math.toRadians(180))
-            .build();
+        hub_to_duck = AssetsTrajectoryManager.load("blue-hub_to_duck_v2");
 
-        hub_to_park = AssetsTrajectoryManager.load("hub_to_park");
-//            drive.trajectoryBuilder(new Pose2d(7.00, -24.00, Math.toRadians(-90)), Math.toRadians(0))
-//            .splineToConstantHeading(new Vector2d(17.00, -43.79), Math.toRadians(-0))
-//            .lineToConstantHeading(new Vector2d(80.00, -43.79))
-//            .build();
+        duck_to_hub = AssetsTrajectoryManager.load("blue-duck_to_hub");
 
-        start_to_hub = AssetsTrajectoryManager.load("start_to_hub");
+        hub_to_park = AssetsTrajectoryManager.load("blue-hub_to_park");
+
+        start_to_hub = AssetsTrajectoryManager.load("blue-start_to_hub");
+
     }
 
     @Override
@@ -147,8 +125,21 @@ public class AutoOpV3_Red_W extends AutonomousOpMode {
     @Override
     protected Action getRoutine() {
 
+
+//        Action autoRoutine = new RunLinear(
+//            new RunParallelWait(
+//                new RunTrajectory(start_to_hub),
+//                new OuttakeSetLevel(preloadLevel)
+//            ),
+//            new OuttakeDropFreight(),
+//            new RunParallelWait(
+//                new OuttakeSetLevel(Outtake.Level.loading),
+//                new RunTrajectory(hub_to_warehouse_c1)
+//            )
+//        );
+
         Action autoRoutine = new RunLinear(
-            new RunDelay(14000),
+            new RunDelay(4000),
             new RunParallelWait(
                 new RunTrajectory(start_to_hub),
                 new OuttakeSetLevel(preloadLevel)
@@ -164,11 +155,11 @@ public class AutoOpV3_Red_W extends AutonomousOpMode {
                     new RunDelay(3500)
                 )
             ),
+            new IntakeSetPower(0),
             new RunParallelWait(
                 new RunTrajectory(warehouse_to_hub_c1),
                 new RunLinear(
-                    new IntakeSetPower(0),
-                    new RunDelay(300),
+                    new RunDelay(700),
                     new IntakeSetPower(-1),
                     new RunDelay(900),
                     new OuttakeSetLevel(Outtake.Level.high)
@@ -176,27 +167,27 @@ public class AutoOpV3_Red_W extends AutonomousOpMode {
             ),
             new OuttakeDropFreight(),
 
-//            new RunParallelWait(
-//                new OuttakeSetLevel(Outtake.Level.loading),
-//                new RunTrajectory(hub_to_warehouse_c1),
-//                new IntakeSetPower(-1),
-//                new IntermediarySetRunning(true),
-//                new RunParallelRace(
-//                    new IntakeWaitForElement(),
-//                    new RunDelay(3500)
-//                )
-//            ),
-//            new RunParallelWait(
-//                new RunTrajectory(warehouse_to_hub_c2),
-//                new RunLinear(
-//                    new IntakeSetPower(0),
-//                    new RunDelay(300),
-//                    new IntakeSetPower(-1),
-//                    new RunDelay(900),
-//                    new OuttakeSetLevel(Outtake.Level.high)
-//                )
-//            ),
-//            new OuttakeDropFreight(),
+            new RunParallelWait(
+                new OuttakeSetLevel(Outtake.Level.loading),
+                new RunTrajectory(hub_to_warehouse_c2),
+                new IntakeSetPower(-1),
+                new IntermediarySetRunning(true),
+                new RunParallelRace(
+                    new IntakeWaitForElement(),
+                    new RunDelay(3500)
+                )
+            ),
+            new IntakeSetPower(0),
+            new RunParallelWait(
+                new RunTrajectory(warehouse_to_hub_c2),
+                new RunLinear(
+                    new RunDelay(700),
+                    new IntakeSetPower(-1),
+                    new RunDelay(900),
+                    new OuttakeSetLevel(Outtake.Level.high)
+                )
+            ),
+            new OuttakeDropFreight(),
 
 
             new IntermediarySetRunning(false),

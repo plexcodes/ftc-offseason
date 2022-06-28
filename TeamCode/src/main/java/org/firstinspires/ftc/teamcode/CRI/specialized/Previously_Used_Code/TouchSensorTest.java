@@ -1,13 +1,12 @@
-package org.firstinspires.ftc.teamcode.CRI.specialized.prev;
+package org.firstinspires.ftc.teamcode.CRI.specialized.Previously_Used_Code;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 @Disabled
 @TeleOp
-public class OpModeDumb extends OpMode {
+public class TouchSensorTest extends OpMode {
 
     DigitalChannel touchSensor1, touchSensor2, touchSensor3;
 
