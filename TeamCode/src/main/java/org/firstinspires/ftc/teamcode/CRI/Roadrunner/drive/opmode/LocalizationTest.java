@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.CRI.Roadrunner.drive.opmode;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -17,6 +18,7 @@ import org.firstinspires.ftc.teamcode.CRI.Roadrunner.drive.SampleMecanumDrive;
  * exercise is to ascertain whether the localizer has been configured properly (note: the pure
  * encoder localizer heading may be significantly off if the track width has not been tuned).
  */
+@Disabled
 @TeleOp(group = "drive")
 public class LocalizationTest extends LinearOpMode {
     Servo sl, sc, sr;
@@ -31,12 +33,6 @@ public class LocalizationTest extends LinearOpMode {
 
         drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        sl = hardwareMap.get(Servo.class, "servoOdoLeft");
-        sc = hardwareMap.get(Servo.class, "servoOdoCenter");
-        sr = hardwareMap.get(Servo.class, "servoOdoRight");
-        sl.setPosition(0.0);
-        sc.setPosition(1.0);
-        sr.setPosition(1.0);
         waitForStart();
 
         while (!isStopRequested()) {
