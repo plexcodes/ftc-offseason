@@ -105,7 +105,7 @@ public abstract class AutonomousOpMode extends LinearOpMode {
             packet.addLine(line);
         }
 
-//        FtcDashboard.getInstance().sendTelemetryPacket(packet);
+        FtcDashboard.getInstance().sendTelemetryPacket(packet);
     }
 
     void updateRobotState() {
