@@ -21,7 +21,7 @@ import org.firstinspires.ftc.teamcode.CRI.Functions.actions.outtake.OuttakeSetLe
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
-@Disabled
+//@Disabled
 @Autonomous(name = "Red Carousel Duck Park")
 public class AutoOpV4_RedCarouselDuckPark extends AutoOpV4Base {
 

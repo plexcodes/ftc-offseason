@@ -1,0 +1,25 @@
+Behaviour Tree Actions:
+
+RunLinear:
+-Runs its child actions sequentially
+
+RunParallelWait:
+-Runs its child actions at the same time
+
+RunParallelRace:
+-Runs its child actions at the same time, but finishes when at least one child has ended
+
+RunDelay:
+-Run for a limited time
+
+RunWhile:
+-Self explanatory
+
+RunInLine:
+-Instantly run code
+
+RunAsync:
+-Runs in a separate thread, finishes when the thread finishes
+
+RunRepeated:
+-Run an action for n times

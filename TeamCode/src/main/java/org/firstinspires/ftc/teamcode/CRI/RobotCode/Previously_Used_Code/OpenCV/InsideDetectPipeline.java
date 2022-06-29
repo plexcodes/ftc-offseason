@@ -1,9 +1,9 @@
-package org.firstinspires.ftc.teamcode.CRI.RobotCode.Previously_Used_Code;
+package org.firstinspires.ftc.teamcode.CRI.RobotCode.Previously_Used_Code.OpenCV;
 
 import com.acmerobotics.dashboard.config.Config;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.CRI.RobotCode.Previously_Used_Code.IntakeMechanism;
+import org.firstinspires.ftc.teamcode.CRI.RobotCode.Previously_Used_Code.Mechanisms.IntakeMechanism;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.Scalar;

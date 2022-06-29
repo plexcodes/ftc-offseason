@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.CRI.RobotCode.Previously_Used_Code;
+package org.firstinspires.ftc.teamcode.CRI.RobotCode.Previously_Used_Code.DriverControl;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.CRI.Mechanisms.Mecanum;
+import org.firstinspires.ftc.teamcode.CRI.RobotCode.Previously_Used_Code.Mechanisms.OuttakeMechanism;
 
 @Disabled
 @TeleOp()

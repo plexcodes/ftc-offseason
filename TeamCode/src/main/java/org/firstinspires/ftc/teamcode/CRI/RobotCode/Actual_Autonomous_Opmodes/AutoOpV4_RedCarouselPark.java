@@ -15,7 +15,7 @@ import org.firstinspires.ftc.teamcode.CRI.Functions.actions.controlflow.RunLinea
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.controlflow.RunParallelWait;
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.outtake.OuttakeDropFreight;
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.outtake.OuttakeSetLevel;
-@Disabled
+//@Disabled
 @Autonomous(name = "Red Carousel Park")
 public class AutoOpV4_RedCarouselPark extends AutoOpV4Base {
 

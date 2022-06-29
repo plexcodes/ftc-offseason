@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.CRI.RobotCode.Previously_Used_Code;
+package org.firstinspires.ftc.teamcode.CRI.RobotCode.Previously_Used_Code.Autonomous;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
@@ -12,10 +12,14 @@ import org.firstinspires.ftc.teamcode.CRI.Roadrunner.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.CRI.Roadrunner.util.AssetsTrajectoryManager;
 import org.firstinspires.ftc.teamcode.CRI.Functions.Action;
 import org.firstinspires.ftc.teamcode.CRI.Functions.AutonomousOpMode;
-import org.firstinspires.ftc.teamcode.CRI.Functions.actions.RunCarousel;
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.RunTrajectory;
+import org.firstinspires.ftc.teamcode.CRI.Functions.actions.controlflow.RunDelay;
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.controlflow.RunLinear;
+import org.firstinspires.ftc.teamcode.CRI.Functions.actions.controlflow.RunParallelRace;
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.controlflow.RunParallelWait;
+import org.firstinspires.ftc.teamcode.CRI.Functions.actions.intake.IntakeSetPower;
+import org.firstinspires.ftc.teamcode.CRI.Functions.actions.intake.IntakeWaitForElement;
+import org.firstinspires.ftc.teamcode.CRI.Functions.actions.intake.IntermediarySetRunning;
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.outtake.OuttakeDropFreight;
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.outtake.OuttakeSetLevel;
 import org.firstinspires.ftc.teamcode.CRI.Static.PoseStorage;
@@ -23,8 +27,8 @@ import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 @Disabled
-@Autonomous(name = "Autonomie Blue", group = "0prod")
-public class AutonomousOpmodeV3_BlueSide extends AutonomousOpMode {
+@Autonomous(name = "Autonomie Blue Warehouse 2 Cicluri", group = "0prod")
+public class AutonomousOpmodeV3_BlueSide_Warehouse2Cycles extends AutonomousOpMode {
 
     Trajectory start_to_carousel, carousel_to_hub, warehouse_to_hub_c1, hub_to_warehouse_c1,
         warehouse_to_hub_c2, hub_to_duck, duck_to_hub, hub_to_park;
@@ -34,12 +38,13 @@ public class AutonomousOpmodeV3_BlueSide extends AutonomousOpMode {
     OpenCvCamera camera;
 
     Outtake.Level preloadLevel = Outtake.Level.high;
-    private Trajectory hto;
+    private Trajectory start_to_hub;
+    private Trajectory hub_to_warehouse_c2;
 
 
     @Override
     protected void precompileTrajectories() {
-        PoseStorage.poseEstimate = new Pose2d(-36.00, 63.34, Math.toRadians(-90));
+        PoseStorage.poseEstimate = new Pose2d(12.00, 63.00, Math.toRadians(-90));
 
         // !!!! de inlocuit
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
@@ -50,9 +55,11 @@ public class AutonomousOpmodeV3_BlueSide extends AutonomousOpMode {
 
         hub_to_warehouse_c1 = AssetsTrajectoryManager.load("blue-hub_to_warehouse_c1");
 
+        hub_to_warehouse_c2 = AssetsTrajectoryManager.load("blue-hub_to_warehouse_c2");
+
         warehouse_to_hub_c1 = AssetsTrajectoryManager.load("blue-warehouse_to_hub_c1");
 
-//        warehouse_to_hub_c2 = AssetsTrajectoryManager.load("blue-");
+        warehouse_to_hub_c2 = AssetsTrajectoryManager.load("blue-warehouse_to_hub_c2");
 
         hub_to_duck = AssetsTrajectoryManager.load("blue-hub_to_duck_v2");
 
@@ -60,7 +67,8 @@ public class AutonomousOpmodeV3_BlueSide extends AutonomousOpMode {
 
         hub_to_park = AssetsTrajectoryManager.load("blue-hub_to_park");
 
-        hto = AssetsTrajectoryManager.load("blue-hub_to_sto");
+        start_to_hub = AssetsTrajectoryManager.load("blue-start_to_hub");
+
     }
 
     @Override
@@ -117,16 +125,73 @@ public class AutonomousOpmodeV3_BlueSide extends AutonomousOpMode {
     @Override
     protected Action getRoutine() {
 
+
+//        Action autoRoutine = new RunLinear(
+//            new RunParallelWait(
+//                new RunTrajectory(start_to_hub),
+//                new OuttakeSetLevel(preloadLevel)
+//            ),
+//            new OuttakeDropFreight(),
+//            new RunParallelWait(
+//                new OuttakeSetLevel(Outtake.Level.loading),
+//                new RunTrajectory(hub_to_warehouse_c1)
+//            )
+//        );
+
         Action autoRoutine = new RunLinear(
+            new RunDelay(4000),
             new RunParallelWait(
-                new RunTrajectory(start_to_carousel),
-                new RunCarousel(2125, 0.25)
-            ),
-            new RunParallelWait(
-                new RunTrajectory(carousel_to_hub),
+                new RunTrajectory(start_to_hub),
                 new OuttakeSetLevel(preloadLevel)
             ),
             new OuttakeDropFreight(),
+            new RunParallelWait(
+                new OuttakeSetLevel(Outtake.Level.loading),
+                new RunTrajectory(hub_to_warehouse_c1),
+                new IntakeSetPower(-1),
+                new IntermediarySetRunning(true),
+                new RunParallelRace(
+                    new IntakeWaitForElement(),
+                    new RunDelay(3500)
+                )
+            ),
+            new IntakeSetPower(0),
+            new RunParallelWait(
+                new RunTrajectory(warehouse_to_hub_c1),
+                new RunLinear(
+                    new RunDelay(700),
+                    new IntakeSetPower(-1),
+                    new RunDelay(900),
+                    new OuttakeSetLevel(Outtake.Level.high)
+                )
+            ),
+            new OuttakeDropFreight(),
+
+            new RunParallelWait(
+                new OuttakeSetLevel(Outtake.Level.loading),
+                new RunTrajectory(hub_to_warehouse_c2),
+                new IntakeSetPower(-1),
+                new IntermediarySetRunning(true),
+                new RunParallelRace(
+                    new IntakeWaitForElement(),
+                    new RunDelay(3500)
+                )
+            ),
+            new IntakeSetPower(0),
+            new RunParallelWait(
+                new RunTrajectory(warehouse_to_hub_c2),
+                new RunLinear(
+                    new RunDelay(700),
+                    new IntakeSetPower(-1),
+                    new RunDelay(900),
+                    new OuttakeSetLevel(Outtake.Level.high)
+                )
+            ),
+            new OuttakeDropFreight(),
+
+
+            new IntermediarySetRunning(false),
+            new IntakeSetPower(0),
             new RunParallelWait(
                 new OuttakeSetLevel(Outtake.Level.loading),
                 new RunTrajectory(hub_to_park)

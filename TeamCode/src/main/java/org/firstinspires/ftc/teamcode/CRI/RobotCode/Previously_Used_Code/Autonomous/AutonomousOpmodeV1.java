@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.CRI.RobotCode.Previously_Used_Code;
+package org.firstinspires.ftc.teamcode.CRI.RobotCode.Previously_Used_Code.Autonomous;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
@@ -12,6 +12,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.CRI.Roadrunner.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.CRI.Roadrunner.util.AssetsTrajectoryManager;
+import org.firstinspires.ftc.teamcode.CRI.RobotCode.Previously_Used_Code.Mechanisms.IntakeMechanism;
+import org.firstinspires.ftc.teamcode.CRI.RobotCode.Previously_Used_Code.Mechanisms.OuttakeMechanism;
 import org.firstinspires.ftc.teamcode.CRI.Static.PoseStorage;
 
 @Disabled
