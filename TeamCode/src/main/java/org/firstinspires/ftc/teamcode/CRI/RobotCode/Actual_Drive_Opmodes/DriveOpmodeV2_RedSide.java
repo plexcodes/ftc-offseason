@@ -115,7 +115,7 @@ public class DriveOpmodeV2_RedSide extends OpMode {
         }
         if(g2.getButtonDown("joystick_right")) outtake.motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        drive.vectorMove(-gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.left_trigger - gamepad1.right_trigger, 0.75);
+        drive.vectorMove(-gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.left_trigger - gamepad1.right_trigger, 1);
 
         if (g1.getButtonDown("bumper_left")) carouselState = !carouselState;
 
