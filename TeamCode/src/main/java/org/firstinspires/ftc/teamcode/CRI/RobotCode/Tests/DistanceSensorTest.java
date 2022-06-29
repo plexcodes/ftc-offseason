@@ -5,7 +5,9 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.CRI.Mechanisms.Intake;
 import org.firstinspires.ftc.teamcode.CRI.Mechanisms.FreightSensor;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
+@Disabled
 @TeleOp(name = "Distance Test")
 public class DistanceSensorTest extends OpMode {
 

@@ -14,6 +14,9 @@ import org.firstinspires.ftc.teamcode.CRI.Functions.actions.controlflow.RunParal
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.intake.IntakeSetExtender;
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.outtake.OuttakeDropFreight;
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.outtake.OuttakeSetLevel;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+
+@Disabled
 @Autonomous(name = "Blue Warehouse Cycles Park")
 public class AutoOpV4_BlueWarehouseCyclesPark extends AutoOpV4_RedWarehouseCyclesPark{
     @Override

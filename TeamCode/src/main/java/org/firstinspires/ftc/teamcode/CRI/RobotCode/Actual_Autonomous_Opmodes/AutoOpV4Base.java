@@ -26,7 +26,9 @@ import org.firstinspires.ftc.teamcode.CRI.Functions.actions.outtake.OuttakeSetLe
 import org.firstinspires.ftc.teamcode.CRI.Static.PoseStorage;
 
 import java.util.ArrayList;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
+@Disabled
 abstract public class AutoOpV4Base extends AutonomousOpMode {
 
 	ArrayList<Trajectory> l_h_to_w = null;

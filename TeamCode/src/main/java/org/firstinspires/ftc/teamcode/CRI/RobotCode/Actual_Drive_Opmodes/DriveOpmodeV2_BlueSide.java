@@ -5,6 +5,7 @@ import static org.firstinspires.ftc.teamcode.CRI.Mechanisms.Outtake.SERVO_LOADIN
 import android.annotation.SuppressLint;
 import android.util.Log;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -15,7 +16,7 @@ import org.firstinspires.ftc.teamcode.CRI.Static.GamepadEx;
 import org.firstinspires.ftc.teamcode.CRI.Mechanisms.Mecanum;
 import org.firstinspires.ftc.teamcode.CRI.Mechanisms.Outtake;
 import org.firstinspires.ftc.teamcode.CRI.Mechanisms.FreightSensor;
-
+@Disabled
 @TeleOp(name = "TeleOp Blue", group = "0")
 public class DriveOpmodeV2_BlueSide extends OpMode {
 

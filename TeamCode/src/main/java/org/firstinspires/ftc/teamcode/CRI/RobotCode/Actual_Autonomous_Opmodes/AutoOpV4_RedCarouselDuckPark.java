@@ -19,7 +19,9 @@ import org.firstinspires.ftc.teamcode.CRI.Functions.actions.intake.IntermediaryS
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.outtake.OuttakeDropFreight;
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.outtake.OuttakeSetLevel;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
+@Disabled
 @Autonomous(name = "Red Carousel Duck Park")
 public class AutoOpV4_RedCarouselDuckPark extends AutoOpV4Base {
 
