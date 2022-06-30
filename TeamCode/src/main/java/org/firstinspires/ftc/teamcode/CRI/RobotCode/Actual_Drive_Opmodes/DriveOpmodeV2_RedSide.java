@@ -44,7 +44,7 @@ public class DriveOpmodeV2_RedSide extends OpMode {
 
     DcMotor carouselMotor;
     boolean carouselState = false;
-
+    int freightcount = 0;
     Servo servoCapArm;
     Servo servoCapClaw;
 
@@ -89,7 +89,7 @@ public class DriveOpmodeV2_RedSide extends OpMode {
             channel.setMode(DigitalChannel.Mode.INPUT);
         }
 
-        servoIntake.setPosition(0);
+        servoIntake.setPosition(0.31);
         servoCapArm.setPosition(capPos);
 
         servoCapClaw.setPosition(0);
@@ -101,7 +101,7 @@ public class DriveOpmodeV2_RedSide extends OpMode {
     @SuppressLint("NewApi")
     @Override
     public void loop() {
-
+        telemetry.update();
         g1.update();
         g2.update();
         outtake.update();
@@ -151,8 +151,9 @@ public class DriveOpmodeV2_RedSide extends OpMode {
         if (g2.getButtonDown("x")) outtake.drop();
 
         if(g1.getButtonDown("b"))
-            servoIntake.setPosition((servoIntakeState = !servoIntakeState)? 1 : 0);
+            servoIntake.setPosition((servoIntakeState = !servoIntakeState)? 1 : 0.325);
 
+        if(freightSensor.isDetectingFreight()) {freightcount++; telemetry.addData("No. Of Freight Intook: ", freightcount);}
 
         if (g2.getButtonDown("a")) intakeState = intakeState == IntakeState.Automatic? IntakeState.None : IntakeState.Automatic;
         else {
