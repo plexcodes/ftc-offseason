@@ -6,7 +6,7 @@ import org.firstinspires.ftc.teamcode.CRI.Functions.AutonomousOpMode;
 public class IntakeWaitForElement extends Action {
     @Override
     protected void _start(AutonomousOpMode context) {
-        context.intake.servoIntake.setPosition(1);
+//        context.intake.servoIntake.setPosition(1);
         context.freightSensor.update();
 
     }
@@ -23,7 +23,7 @@ public class IntakeWaitForElement extends Action {
 
     @Override
     protected void _end(AutonomousOpMode context) {
-        context.intake.servoIntake.setPosition(0);
+//        context.intake.servoIntake.setPosition(0);
     }
 
 }

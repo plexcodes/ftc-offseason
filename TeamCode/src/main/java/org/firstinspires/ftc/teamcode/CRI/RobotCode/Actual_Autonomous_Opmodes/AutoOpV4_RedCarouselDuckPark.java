@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.CRI.RobotCode.Actual_Autonomous_Opmodes;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.CRI.Mechanisms.Outtake;
 import org.firstinspires.ftc.teamcode.CRI.Roadrunner.trajectorysequence.TrajectorySequence;
@@ -19,9 +20,7 @@ import org.firstinspires.ftc.teamcode.CRI.Functions.actions.intake.IntermediaryS
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.outtake.OuttakeDropFreight;
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.outtake.OuttakeSetLevel;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-
-//@Disabled
+@Disabled
 @Autonomous(name = "Red Carousel Duck Park")
 public class AutoOpV4_RedCarouselDuckPark extends AutoOpV4Base {
 
@@ -34,7 +33,7 @@ public class AutoOpV4_RedCarouselDuckPark extends AutoOpV4Base {
 
     @Override
     protected void precompileTrajectories() {
-        startLocation = StartLocation.CAROUSEL;
+        startLocation = StartLocation.MID;
 
         start_to_hub = AssetsTrajectoryManager.load(SIDE("cstart_to_hub_q"));
         hub_to_carousel = drive.trajectorySequenceBuilder(new Pose2d(-12, -43.25 * (side == Side.RED? 1 : -1), Math.toRadians(-90)  * (side == Side.RED? 1 : -1)))

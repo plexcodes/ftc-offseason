@@ -61,7 +61,7 @@ public class Intake {
 
 		};
 
-		servoIntake.setPosition(0);
+		servoIntake.setPosition(0.325);
 
 		for(DigitalChannel sensor : touchSensors) {
 			sensor.setMode(DigitalChannel.Mode.INPUT);

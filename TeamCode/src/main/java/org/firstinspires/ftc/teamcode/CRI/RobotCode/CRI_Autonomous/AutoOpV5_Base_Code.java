@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.CRI.RobotCode.Actual_Autonomous_Opmodes;
+package org.firstinspires.ftc.teamcode.CRI.RobotCode.CRI_Autonomous;
 
 import android.annotation.SuppressLint;
 
@@ -8,9 +8,6 @@ import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
-import org.firstinspires.ftc.teamcode.CRI.Functions.actions.intake.IntakeSetExtender;
-import org.firstinspires.ftc.teamcode.CRI.OpenCV.CapstoneDetectPipeline;
-import org.firstinspires.ftc.teamcode.CRI.Mechanisms.Outtake;
 import org.firstinspires.ftc.teamcode.CRI.Functions.Action;
 import org.firstinspires.ftc.teamcode.CRI.Functions.AutonomousOpMode;
 import org.firstinspires.ftc.teamcode.CRI.Functions.ComposedAction;
@@ -19,17 +16,19 @@ import org.firstinspires.ftc.teamcode.CRI.Functions.actions.controlflow.RunDelay
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.controlflow.RunLinear;
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.controlflow.RunParallelRace;
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.controlflow.RunParallelWait;
+import org.firstinspires.ftc.teamcode.CRI.Functions.actions.intake.IntakeSetExtender;
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.intake.IntakeSetPower;
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.intake.IntakeWaitForElement;
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.intake.IntermediarySetRunning;
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.outtake.OuttakeDropFreight;
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.outtake.OuttakeSetLevel;
+import org.firstinspires.ftc.teamcode.CRI.Mechanisms.Outtake;
+import org.firstinspires.ftc.teamcode.CRI.OpenCV.CapstoneDetectPipeline;
 import org.firstinspires.ftc.teamcode.CRI.Static.PoseStorage;
 
 import java.util.ArrayList;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
-abstract public class AutoOpV4Base extends AutonomousOpMode {
+abstract public class AutoOpV5_Base_Code extends AutonomousOpMode {
 
 	ArrayList<Trajectory> l_h_to_w = null;
 	ArrayList<Trajectory> l_w_to_h = null;
