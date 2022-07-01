@@ -60,7 +60,7 @@ public class Outtake {
 	static public int S_HIGH_TICKS = 450;
 
 
-	public static double SERVO_ARMED = 0.5;
+	public static double SERVO_ARMED = 0.75;
 	public static double SERVO_DROP_LOW = 0.0;
 	public static double SERVO_DROP_NORMAL = 0.2;
 	public static double SERVO_LOADING = 1.0;
@@ -74,7 +74,7 @@ public class Outtake {
 
 		motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-		servo.setPosition(SERVO_ARMED);
+		servo.setPosition(SERVO_LOADING);
 
 		servoCapArm = opMode.hardwareMap.get(Servo.class, "servoCapArm");
 		servoCapArm.setPosition(0.8);

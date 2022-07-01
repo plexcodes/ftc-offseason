@@ -164,7 +164,7 @@ abstract public class AutoOpV5_Base_Code extends AutonomousOpMode {
 												new IntakeSetExtender(1),
 												new IntakeWaitForElement()
 											),
-											new RunDelay(4000)
+											new RunDelay(3000)
 									),
 									new IntakeSetExtender(0),
 									new IntakeSetPower(1)

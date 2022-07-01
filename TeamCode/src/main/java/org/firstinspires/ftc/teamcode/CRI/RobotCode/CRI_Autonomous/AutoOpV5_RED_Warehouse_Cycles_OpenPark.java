@@ -45,14 +45,14 @@ public class AutoOpV5_RED_Warehouse_Cycles_OpenPark extends AutoOpV5_Base_Code {
                         new Vector2d[] {
                                 new Vector2d(0, -4),
                                 new Vector2d(5.5, -7),
-                                new Vector2d(9, -9),
+                                new Vector2d(9, -10),
                         },
                         //hub
                         new Vector2d[] {
                                 new Vector2d(0, 0),
-                                new Vector2d(0, -4),
-                                new Vector2d(0, -4.5),
-                                new Vector2d(0, -6)
+                                new Vector2d(2, -4),
+                                new Vector2d(2, -4.5),
+                                new Vector2d(4, -6)
                         },
                         side
                 ),

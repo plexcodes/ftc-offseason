@@ -89,7 +89,7 @@ public class DriveOpmode_RED extends OpMode {
             channel.setMode(DigitalChannel.Mode.INPUT);
         }
 
-        servoIntake.setPosition(0.31);
+        servoIntake.setPosition(0.15);
         servoCapArm.setPosition(capPos);
 
         servoCapClaw.setPosition(0);
@@ -151,7 +151,7 @@ public class DriveOpmode_RED extends OpMode {
         if (g2.getButtonDown("x")) outtake.drop();
 
         if(g1.getButtonDown("b"))
-            servoIntake.setPosition((servoIntakeState = !servoIntakeState)? 1 : 0.325);
+            servoIntake.setPosition((servoIntakeState = !servoIntakeState)? 0.9 : 0.15);
 
         if(freightSensor.isDetectingFreight()) {freightcount++; telemetry.addData("No. Of Freight Intook: ", freightcount);}
 

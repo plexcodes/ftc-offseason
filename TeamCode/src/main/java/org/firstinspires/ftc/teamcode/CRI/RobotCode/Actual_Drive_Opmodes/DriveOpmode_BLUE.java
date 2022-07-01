@@ -90,7 +90,7 @@ public class DriveOpmode_BLUE extends OpMode {
             channel.setMode(DigitalChannel.Mode.INPUT);
         }
 
-        servoIntake.setPosition(0);
+        servoIntake.setPosition(0.15);
         servoCapArm.setPosition(capPos);
 
         servoCapClaw.setPosition(0);
@@ -152,7 +152,7 @@ public class DriveOpmode_BLUE extends OpMode {
         if (g2.getButtonDown("x")) outtake.drop();
 
         if(g1.getButtonDown("b"))
-            servoIntake.setPosition((servoIntakeState = !servoIntakeState)? 1 : 0);
+            servoIntake.setPosition((servoIntakeState = !servoIntakeState)? 0.9 : 0.15);
 
 
         if (g2.getButtonDown("a")) intakeState = intakeState == IntakeState.Automatic? IntakeState.None : IntakeState.Automatic;
