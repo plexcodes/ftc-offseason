@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.CRI.RobotCode.Actual_Drive_Opmodes;
+package org.firstinspires.ftc.teamcode.CRI.RobotCode.CRI_Drive;
 
 import static org.firstinspires.ftc.teamcode.CRI.Mechanisms.Outtake.SERVO_LOADING;
 
@@ -153,7 +153,10 @@ public class DriveOpmode_RED extends OpMode {
         if(g1.getButtonDown("b"))
             servoIntake.setPosition((servoIntakeState = !servoIntakeState)? 0.9 : 0.15);
 
-        if(freightSensor.isDetectingFreight()) {freightcount++; telemetry.addData("No. Of Freight Intook: ", freightcount);}
+//        if(freightSensor.isDetectingFreight()) {
+//            freightcount++;
+//            telemetry.addData("No. Of Freight Intook: ", freightcount);
+//        }
 
         if (g2.getButtonDown("a")) intakeState = intakeState == IntakeState.Automatic? IntakeState.None : IntakeState.Automatic;
         else {

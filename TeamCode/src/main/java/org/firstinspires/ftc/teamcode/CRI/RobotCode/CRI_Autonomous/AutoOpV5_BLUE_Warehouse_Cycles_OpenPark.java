@@ -15,10 +15,9 @@ import org.firstinspires.ftc.teamcode.CRI.Functions.actions.intake.IntakeSetExte
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.outtake.OuttakeDropFreight;
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.outtake.OuttakeSetLevel;
 import org.firstinspires.ftc.teamcode.CRI.Mechanisms.Outtake;
-import org.firstinspires.ftc.teamcode.CRI.RobotCode.Actual_Autonomous_Opmodes.AutoOpV4_RedWarehouseCyclesPark;
 
 @Disabled
-@Autonomous(name = "gwfawfes")
+@Autonomous(name = "BLUE Warehouse | Preload + 3 Cycles + Open Park")
 public class AutoOpV5_BLUE_Warehouse_Cycles_OpenPark extends AutoOpV5_RED_Warehouse_Cycles_OpenPark {
     @Override
     protected void setParams() {
