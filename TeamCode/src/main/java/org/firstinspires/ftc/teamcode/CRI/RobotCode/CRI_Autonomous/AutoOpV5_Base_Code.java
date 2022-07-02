@@ -47,24 +47,14 @@ abstract public class AutoOpV5_Base_Code extends AutonomousOpMode {
 	protected Side side = Side.RED;
 	protected StartLocation startLocation = StartLocation.WAREHOUSE;
 
-	Trajectory start_to_carousel, carousel_to_hub, warehouse_to_hub, hub_to_warehouse, hub_to_park, start_to_hub;
+	Trajectory start_to_carousel, carousel_to_hub, warehouse_to_hub, hub_to_warehouse, start_to_hub, hub_to_park;
 
 	protected String SIDE(String name) {
 		return ((side == Side.RED) ? "red_" : "blue_") + name;
 	}
 
-	Servo odoLeft, odoCenter, odoRight;
-
 	@Override
 	protected void initStart() {
-
-		odoLeft = hardwareMap.get(Servo.class, "servoOdoLeft");
-		odoCenter = hardwareMap.get(Servo.class, "servoOdoCenter");
-		odoRight = hardwareMap.get(Servo.class, "servoOdoRight");
-
-		odoLeft.setPosition(1.0);
-		odoCenter.setPosition(1.0);
-		odoRight.setPosition(1.0);
 
 		if (side == Side.RED) {
 			if (startLocation == StartLocation.WAREHOUSE)

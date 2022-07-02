@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.CRI.RobotCode.CRI_Autonomous;
 
 import com.acmerobotics.roadrunner.geometry.Vector2d;
+import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.CRI.Mechanisms.Outtake;
@@ -13,8 +14,9 @@ import org.firstinspires.ftc.teamcode.CRI.Functions.actions.controlflow.RunParal
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.outtake.OuttakeDropFreight;
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.outtake.OuttakeSetLevel;
 
-@Autonomous(name = "RED Warehouse + 3 Cycles + Open Park")
+@Autonomous(name = "RED Warehouse | Preload + 3 Cycles + Open Park")
 public class AutoOpV5_RED_Warehouse_Cycles_OpenPark extends AutoOpV5_Base_Code {
+Trajectory hub_to_park;
 
     @Override
     protected void setParams() {
@@ -52,7 +54,7 @@ public class AutoOpV5_RED_Warehouse_Cycles_OpenPark extends AutoOpV5_Base_Code {
                                 new Vector2d(0, 0),
                                 new Vector2d(2, -4),
                                 new Vector2d(2, -4.5),
-                                new Vector2d(4, -6)
+                                new Vector2d(5, -6)
                         },
                         side
                 ),

@@ -60,7 +60,7 @@ public class Outtake {
 	static public int S_HIGH_TICKS = 450;
 
 
-	public static double SERVO_ARMED = 0.75;
+	public static double SERVO_ARMED = 0.6;
 	public static double SERVO_DROP_LOW = 0.0;
 	public static double SERVO_DROP_NORMAL = 0.2;
 	public static double SERVO_LOADING = 1.0;
