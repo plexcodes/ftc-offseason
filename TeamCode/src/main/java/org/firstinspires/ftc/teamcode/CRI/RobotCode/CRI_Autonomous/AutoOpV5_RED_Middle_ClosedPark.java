@@ -18,7 +18,7 @@ import org.firstinspires.ftc.teamcode.CRI.RobotCode.CRI_Autonomous.AutoOpV5_Base
 
 
 @Autonomous(name = "RED Middle | Preload + Alliance Delay + Closed Park")
-public class AutoOpV5_RED_Middle_OpenPark extends AutoOpV5_Base_Code {
+public class AutoOpV5_RED_Middle_ClosedPark extends AutoOpV5_Base_Code {
     Trajectory hub_to_wait, wait_to_park;
     @Override
     protected void setParams() {
@@ -28,11 +28,9 @@ public class AutoOpV5_RED_Middle_OpenPark extends AutoOpV5_Base_Code {
     @Override
     protected void precompileTrajectories() {
         startLocation = StartLocation.MID;
-
-        start_to_hub = AssetsTrajectoryManager.load(SIDE("cstart_to_hub"));
-        hub_to_wait = AssetsTrajectoryManager.load("red_hub_to_wait");
-        wait_to_park = AssetsTrajectoryManager.load("red_wait_to_park");
-
+        start_to_hub = AssetsTrajectoryManager.load(SIDE("mstart_to_hub"));
+        hub_to_wait = AssetsTrajectoryManager.load(SIDE("hub_to_wait"));
+        wait_to_park = AssetsTrajectoryManager.load(SIDE("wait_to_park"));
     }
 
     @Override

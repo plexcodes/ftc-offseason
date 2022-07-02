@@ -59,13 +59,17 @@ abstract public class AutoOpV5_Base_Code extends AutonomousOpMode {
 		if (side == Side.RED) {
 			if (startLocation == StartLocation.WAREHOUSE)
 				PoseStorage.poseEstimate = new Pose2d(12, -63.34, Math.toRadians(90));
-			else
+			else if(startLocation == StartLocation.MID)
 				PoseStorage.poseEstimate = new Pose2d(-36, -63.34, Math.toRadians(90));
+			else if(startLocation == StartLocation.CAROUSEL)
+				PoseStorage.poseEstimate = new Pose2d(-84.00, -63.34, Math.toRadians(180));
 		} else {
 			if (startLocation == StartLocation.WAREHOUSE)
 				PoseStorage.poseEstimate = new Pose2d(12, 63.34, Math.toRadians(-90));
-			else
+			else if(startLocation == StartLocation.MID)
 				PoseStorage.poseEstimate = new Pose2d(-36, 63.34, Math.toRadians(-90));
+			else if(startLocation == StartLocation.CAROUSEL)
+				PoseStorage.poseEstimate = new Pose2d(-84.00, 63.34, Math.toRadians(180));
 		}
 
 
