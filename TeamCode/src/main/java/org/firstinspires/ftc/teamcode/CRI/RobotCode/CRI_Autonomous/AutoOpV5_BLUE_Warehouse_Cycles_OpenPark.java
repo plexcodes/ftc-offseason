@@ -46,7 +46,7 @@ public class AutoOpV5_BLUE_Warehouse_Cycles_OpenPark extends AutoOpV5_RED_Wareho
                             new Vector2d(0, 0),
                             new Vector2d(2, -4),
                             new Vector2d(2, -4.5),
-                            new Vector2d(5, -6)
+                            new Vector2d(5, -7)
                     },
                     side
             ),

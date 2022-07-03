@@ -158,7 +158,7 @@ abstract public class AutoOpV5_Base_Code extends AutonomousOpMode {
 												new IntakeSetExtender(1),
 												new IntakeWaitForElement()
 											),
-											new RunDelay(3000)
+											new RunDelay(4000)
 									),
 									new IntakeSetExtender(0),
 									new IntakeSetPower(1)
@@ -202,16 +202,16 @@ abstract public class AutoOpV5_Base_Code extends AutonomousOpMode {
 		}
 
 		Trajectory get_h_to_w(AutonomousOpMode context, int cycleNo) {
-			return context.drive.trajectoryBuilder(new Pose2d(-12.00 + hPoints[cycleNo].getX(), (-43.25 + hPoints[cycleNo].getY()) * (side == Side.RED ? 1 : -1), Math.toRadians(-90) * (side == Side.RED ? 1 : -1)), Math.toRadians(-90) * (side == Side.RED ? 1 : -1))
+			return context.drive.trajectoryBuilder(new Pose2d(-15.00 + hPoints[cycleNo].getX(), (-43.0 + hPoints[cycleNo].getY()) * (side == Side.RED ? 1 : -1), Math.toRadians(-90) * (side == Side.RED ? 1 : -1)), Math.toRadians(-90) * (side == Side.RED ? 1 : -1))
 					.splineToSplineHeading(new Pose2d(17.00, (-65.70 + wPoints[cycleNo].getY()) * (side == Side.RED ? 1 : -1), Math.toRadians(0) * (side == Side.RED ? 1 : -1)), Math.toRadians(0) * (side == Side.RED ? 1 : -1))
-					.lineToLinearHeading(new Pose2d(43.00 + wPoints[cycleNo].getX(), (-65.70 + wPoints[cycleNo].getY()) * (side == Side.RED ? 1 : -1), Math.toRadians(0) * (side == Side.RED ? 1 : -1)))
+					.lineToLinearHeading(new Pose2d(46.00 + wPoints[cycleNo].getX(), (-65.70 + wPoints[cycleNo].getY()) * (side == Side.RED ? 1 : -1), Math.toRadians(0) * (side == Side.RED ? 1 : -1)))
 					.build();
 		}
 
 		Trajectory get_w_to_h(AutonomousOpMode context, int cycleNo) {
 			return context.drive.trajectoryBuilder(new Pose2d(43.00 + wPoints[cycleNo].getX(), (-65.70 + wPoints[cycleNo].getY()) * (side == Side.RED ? 1 : -1), Math.toRadians(0) * (side == Side.RED ? 1 : -1)), Math.toRadians(180) * (side == Side.RED ? 1 : -1))
 					.lineToConstantHeading(new Vector2d(17.00, (-65.70 + wPoints[cycleNo].getY()) * (side == Side.RED ? 1 : -1)))
-					.splineTo(new Vector2d(-12.00 + hPoints[cycleNo + 1].getX(), (-43.25 + hPoints[cycleNo + 1].getY()) * (side == Side.RED ? 1 : -1)), Math.toRadians(90) * (side == Side.RED ? 1 : -1))
+					.splineTo(new Vector2d(-15.00 + hPoints[cycleNo + 1].getX(), (-43.25 + hPoints[cycleNo + 1].getY()) * (side == Side.RED ? 1 : -1)), Math.toRadians(90) * (side == Side.RED ? 1 : -1))
 					.build();
 		}
 

@@ -28,7 +28,7 @@ Trajectory hub_to_park;
         startLocation = StartLocation.WAREHOUSE;
 
         hub_to_park = AssetsTrajectoryManager.load(SIDE("hub_to_park"));
-        start_to_hub = AssetsTrajectoryManager.load(SIDE("wstart_to_hub"));
+        start_to_hub = AssetsTrajectoryManager.load(SIDE("start_to_hub"));
         outtake.servoCapArm.setPosition(0.65);
     }
 
@@ -51,10 +51,10 @@ Trajectory hub_to_park;
                         },
                         //hub
                         new Vector2d[] {
-                                new Vector2d(0, 0),
-                                new Vector2d(2, -4),
-                                new Vector2d(2, -4.5),
-                                new Vector2d(5, -6)
+                                new Vector2d(3.5, 0),
+                                new Vector2d(3.5, -5),
+                                new Vector2d(4.5, -7.5),
+                                new Vector2d(6, -10)
                         },
                         side
                 ),
