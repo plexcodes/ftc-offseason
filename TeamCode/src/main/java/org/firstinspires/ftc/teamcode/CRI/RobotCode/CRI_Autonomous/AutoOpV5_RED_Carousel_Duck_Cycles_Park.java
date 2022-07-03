@@ -50,16 +50,16 @@ public class AutoOpV5_RED_Carousel_Duck_Cycles_Park extends AutoOpV5_Base_Code_W
                 3,
                 //warehouse
                 new Vector2d[] {
-                        new Vector2d(0, -4),
-                        new Vector2d(5.5, -7),
-                        new Vector2d(9, -10),
+                        new Vector2d(0, 0),
+                        new Vector2d(0, 0),
+                        new Vector2d(0, 0),
                 },
                 //hub
                 new Vector2d[] {
                         new Vector2d(0, 0),
-                        new Vector2d(2, -4),
-                        new Vector2d(2, -4.5),
-                        new Vector2d(5, -7)
+                        new Vector2d(0, 0),
+                        new Vector2d(0, 0),
+                        new Vector2d(0, 0)
                 },
                 side
         )

@@ -71,14 +71,13 @@ abstract public class AutoOpV5_Base_Code_Carousel extends AutonomousOpMode {
                 PoseStorage.poseEstimate = new Pose2d(-84.00, 63.34, Math.toRadians(180));
         }
 
-
         // RESET OUTTAKE TICKS
-
         outtake.motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
 
         // CAMERA INITIALIZATION
         capstoneDetection = new CapstoneDetectPipeline();
+
 //
 //		webcamName = hardwareMap.get(WebcamName.class, "Webcam 1");
 //		int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());

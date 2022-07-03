@@ -161,6 +161,7 @@ abstract public class AutoOpV5_Base_Code_Warehouse_And_Middle extends Autonomous
 											new RunDelay(4000)
 									),
 									new IntakeSetExtender(0),
+									new RunDelay(1000),
 									new IntakeSetPower(1)
 							)
 
