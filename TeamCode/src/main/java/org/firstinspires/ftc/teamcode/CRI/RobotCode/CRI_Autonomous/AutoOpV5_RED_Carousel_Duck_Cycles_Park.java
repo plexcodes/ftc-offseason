@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.CRI.RobotCode.CRI_Autonomous;
 
+import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
@@ -16,7 +17,7 @@ import org.firstinspires.ftc.teamcode.CRI.Roadrunner.util.AssetsTrajectoryManage
 
 
 @Autonomous(name = "RED Carousel | 1 Duck + Preload + Cycles")
-public class AutoOpV5_RED_Carousel_Duck_Cycles_Park extends AutoOpV5_Base_Code {
+public class AutoOpV5_RED_Carousel_Duck_Cycles_Park extends AutoOpV5_Base_Code_Warehouse_And_Middle {
 
     Trajectory carousel_to_shared, shared_to_warehouse;
 
@@ -44,8 +45,24 @@ public class AutoOpV5_RED_Carousel_Duck_Cycles_Park extends AutoOpV5_Base_Code {
                         new RunTrajectory(carousel_to_shared)
                         ),
                 new OuttakeSetLevel(Outtake.Level.loading),
-                new OuttakeDropFreight()
-
+                new OuttakeDropFreight(),
+        new DoNCycles(
+                3,
+                //warehouse
+                new Vector2d[] {
+                        new Vector2d(0, -4),
+                        new Vector2d(5.5, -7),
+                        new Vector2d(9, -10),
+                },
+                //hub
+                new Vector2d[] {
+                        new Vector2d(0, 0),
+                        new Vector2d(2, -4),
+                        new Vector2d(2, -4.5),
+                        new Vector2d(5, -7)
+                },
+                side
+        )
         );
     }
 }

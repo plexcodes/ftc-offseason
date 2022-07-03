@@ -15,7 +15,7 @@ import org.firstinspires.ftc.teamcode.CRI.Functions.actions.outtake.OuttakeDropF
 import org.firstinspires.ftc.teamcode.CRI.Functions.actions.outtake.OuttakeSetLevel;
 
 @Autonomous(name = "RED Warehouse | Preload + 3 Cycles + Open Park")
-public class AutoOpV5_RED_Warehouse_Cycles_OpenPark extends AutoOpV5_Base_Code {
+public class AutoOpV5_RED_Warehouse_Cycles_OpenPark extends AutoOpV5_Base_Code_Warehouse_And_Middle {
 Trajectory hub_to_park;
 
     @Override

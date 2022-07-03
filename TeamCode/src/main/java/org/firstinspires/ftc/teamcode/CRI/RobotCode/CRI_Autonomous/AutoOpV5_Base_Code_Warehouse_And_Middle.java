@@ -28,7 +28,7 @@ import org.firstinspires.ftc.teamcode.CRI.Static.PoseStorage;
 
 import java.util.ArrayList;
 
-abstract public class AutoOpV5_Base_Code extends AutonomousOpMode {
+abstract public class AutoOpV5_Base_Code_Warehouse_And_Middle extends AutonomousOpMode {
 
 	ArrayList<Trajectory> l_h_to_w = null;
 	ArrayList<Trajectory> l_w_to_h = null;
