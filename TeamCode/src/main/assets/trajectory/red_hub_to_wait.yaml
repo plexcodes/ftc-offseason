@@ -6,10 +6,10 @@ startPose:
 startTangent: -1.5707963267948966
 waypoints:
 - position:
-    x: 0.0
-    y: -67.0
+    x: -20.0
+    y: -70.0
   heading: 0.0
-  tangent: 0.0
-  interpolationType: "SPLINE"
+  tangent: -1.5707963267948966
+  interpolationType: "LINEAR"
 resolution: 0.25
 version: 1

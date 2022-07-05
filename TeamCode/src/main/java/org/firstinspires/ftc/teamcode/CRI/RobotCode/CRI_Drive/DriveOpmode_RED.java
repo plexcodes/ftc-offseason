@@ -115,13 +115,13 @@ public class DriveOpmode_RED extends OpMode {
         }
         if(g2.getButtonDown("joystick_right")) outtake.motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        drive.vectorMove(-gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.left_trigger - gamepad1.right_trigger, 0.85);
+        drive.vectorMove(-gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.left_trigger - gamepad1.right_trigger, gamepad1.x ? 0.8 : 0.92);
 
         if (g1.getButtonDown("bumper_left")) carouselState = !carouselState;
 
         telemetry.update();
 
-        carouselMotor.setPower(carouselState ? (g1.getButton("bumper_right") ? -0.7 : -0.43) : 0.0);
+        carouselMotor.setPower(carouselState ? (g1.getButton("bumper_right") ? -0.7 : -0.48) : 0.0);
         intakeMotor.setPower(g2.getButton("b") ? 1.0 : intakeState != IntakeState.None? -1.0 : 0.0);
         intermediaryMotor.setPower(g2.getButton("b") ? 1.0 : intakeState != IntakeState.None ? -1.0 : 0.0);
 
@@ -139,7 +139,7 @@ public class DriveOpmode_RED extends OpMode {
         }
 
         if(g2.getButtonDown("bumper_right")) {
-            servoCapClaw.setPosition(servoCapClaw.getPosition() > 0? 0 : 1);
+            servoCapClaw.setPosition(servoCapClaw.getPosition() > 0? 0 : 0.7);
         }
 
         servoCapArm.setPosition(capPos);

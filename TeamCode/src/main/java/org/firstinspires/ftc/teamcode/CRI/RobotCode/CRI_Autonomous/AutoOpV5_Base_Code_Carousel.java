@@ -73,6 +73,7 @@ abstract public class AutoOpV5_Base_Code_Carousel extends AutonomousOpMode {
 
         // RESET OUTTAKE TICKS
         outtake.motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        outtake.servo.setPosition(Outtake.SERVO_ARMED);
 
 
         // CAMERA INITIALIZATION

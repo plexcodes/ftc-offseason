@@ -43,12 +43,9 @@ public class AutoOpV5_RED_Middle_ClosedPark extends AutoOpV5_Base_Code_Warehouse
                         new RunTrajectory(start_to_hub)
                 ),
                 new OuttakeDropFreight(),
-                new RunLinear(
-                        new RunDelay(300),
-                        new OuttakeSetLevel(Outtake.Level.loading)
-                ),
+                new OuttakeSetLevel(Outtake.Level.loading),
                 new RunTrajectory(hub_to_wait),
-                new RunDelay(1000),
+                new RunDelay(2000),
                 new RunTrajectory(wait_to_park)
         );
     }

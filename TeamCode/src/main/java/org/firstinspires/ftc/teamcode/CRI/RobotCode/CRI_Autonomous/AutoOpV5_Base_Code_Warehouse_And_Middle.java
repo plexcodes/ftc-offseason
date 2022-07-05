@@ -62,21 +62,21 @@ abstract public class AutoOpV5_Base_Code_Warehouse_And_Middle extends Autonomous
 			else if(startLocation == StartLocation.MID)
 				PoseStorage.poseEstimate = new Pose2d(-36, -63.34, Math.toRadians(90));
 			else if(startLocation == StartLocation.CAROUSEL)
-				PoseStorage.poseEstimate = new Pose2d(-84.00, -63.34, Math.toRadians(180));
+				PoseStorage.poseEstimate = new Pose2d(-69, -63.34, Math.toRadians(-90));
 		} else {
 			if (startLocation == StartLocation.WAREHOUSE)
 				PoseStorage.poseEstimate = new Pose2d(12, 63.34, Math.toRadians(-90));
 			else if(startLocation == StartLocation.MID)
 				PoseStorage.poseEstimate = new Pose2d(-36, 63.34, Math.toRadians(-90));
 			else if(startLocation == StartLocation.CAROUSEL)
-				PoseStorage.poseEstimate = new Pose2d(-84.00, 63.34, Math.toRadians(180));
+				PoseStorage.poseEstimate = new Pose2d(-69, 63.34, Math.toRadians(90));
 		}
 
 
 		// RESET OUTTAKE TICKS
 
 		outtake.motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
+		outtake.servo.setPosition(Outtake.SERVO_ARMED);
 
 		// CAMERA INITIALIZATION
 		capstoneDetection = new CapstoneDetectPipeline();
@@ -134,13 +134,15 @@ abstract public class AutoOpV5_Base_Code_Warehouse_And_Middle extends Autonomous
 		private final Trajectory h_to_w;
 		private final Trajectory w_to_h;
 		private boolean timeoutKills;
+		private Outtake.Level level;
 
 
-		public DoOneCycle(Trajectory h_to_w, Trajectory w_to_h, boolean timeoutKills) {
+		public DoOneCycle(Trajectory h_to_w, Trajectory w_to_h, boolean timeoutKills, Outtake.Level level) {
 
 			this.h_to_w = h_to_w;
 			this.w_to_h = w_to_h;
 			this.timeoutKills = timeoutKills;
+			this.level = level;
 		}
 
 		@SuppressLint("NewApi")
@@ -170,7 +172,7 @@ abstract public class AutoOpV5_Base_Code_Warehouse_And_Middle extends Autonomous
 							new RunTrajectory(w_to_h),
 							new RunLinear(
 									new RunDelay(900),
-									new OuttakeSetLevel(Outtake.Level.high)
+									new OuttakeSetLevel(level)
 							)
 					),
 					new OuttakeDropFreight()
@@ -178,19 +180,47 @@ abstract public class AutoOpV5_Base_Code_Warehouse_And_Middle extends Autonomous
 		}
 	}
 
-	protected class DoNCycles extends ComposedAction {
-		private final int noCycles;
-		private Vector2d[] wPoints;
-		private Vector2d[] hPoints;
-		private Side side;
-		private Trajectory transitionTrajectory;
+	protected class DoNCyclesCoop extends DoNCycles {
 
+		public DoNCyclesCoop(int noCycles, Vector2d[] wPoints, Vector2d[] hPoints, Side side)
+		{
+			super(noCycles, wPoints, hPoints, side, Outtake.Level.loading);
+		}
+
+		@Override
+		Trajectory get_h_to_w(AutonomousOpMode context, int cycleNo) {
+			return context.drive.trajectoryBuilder(new Pose2d(-66.1 + hPoints[cycleNo].getX(), (-18 + hPoints[cycleNo].getY()) * (side == Side.RED ? 1 : -1), Math.toRadians(-90) * (side == Side.RED ? 1 : -1)), Math.toRadians(-90) * (side == Side.RED ? 1 : -1))
+					.splineTo(new Vector2d(-107 + wPoints[cycleNo].getX(), (-18 + wPoints[cycleNo].getY()) * (side == Side.RED ? 1 : -1)), Math.toRadians(90) * (side == Side.RED ? 1 : -1))
+					.build();
+		}
+
+		@Override
+		Trajectory get_w_to_h(AutonomousOpMode context, int cycleNo) {
+			return context.drive.trajectoryBuilder(new Pose2d(-107 + wPoints[cycleNo].getX(), (-18 + wPoints[cycleNo].getY()) * (side == Side.RED ? 1 : -1), Math.toRadians(90) * (side == Side.RED ? 1 : -1)), Math.toRadians(-90) * (side == Side.RED ? 1 : -1))
+					.splineTo(new Vector2d(-66.1 + wPoints[cycleNo].getX(), (-18 + wPoints[cycleNo].getY()) * (side == Side.RED ? 1 : -1)), Math.toRadians(90) * (side == Side.RED ? 1 : -1))
+					.build();
+		}
+	}
+
+	protected class DoNCycles extends ComposedAction {
+		protected int noCycles;
+		protected Vector2d[] wPoints;
+		protected Vector2d[] hPoints;
+		protected Side side;
+		protected Trajectory transitionTrajectory;
+
+		protected Outtake.Level level;
 
 		public DoNCycles(int noCycles, Vector2d[] wPoints, Vector2d[] hPoints, Side side) {
+			new DoNCycles(noCycles, wPoints, hPoints, side, Outtake.Level.high);
+		}
+
+		protected DoNCycles(int noCycles, Vector2d[] wPoints, Vector2d[] hPoints, Side side, Outtake.Level level) {
 			this.noCycles = noCycles;
 			this.wPoints = wPoints;
 			this.hPoints = hPoints;
 			this.side = side;
+			this.level = level;
 
 		}
 
@@ -226,8 +256,8 @@ abstract public class AutoOpV5_Base_Code_Warehouse_And_Middle extends Autonomous
 								(i == 0 && transitionTrajectory != null) ?
 										transitionTrajectory : get_h_to_w(context, i),
 								get_w_to_h(context, i),
-								i == noCycles - 1
-						)
+								i == noCycles - 1,
+						level)
 				);
 
 			}
