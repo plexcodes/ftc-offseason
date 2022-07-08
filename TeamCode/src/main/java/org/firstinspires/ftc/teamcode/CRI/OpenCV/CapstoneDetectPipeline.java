@@ -51,8 +51,25 @@ public class CapstoneDetectPipeline extends OpenCvPipeline {
     }
 
     public void getMagentaThresholdImage(Mat input, Mat out) {
-        Scalar lowHSV = new Scalar(145, 100, 50);
-        Scalar highHSV = new Scalar(165, 255, 255);
+        // magenta
+//        Scalar lowHSV = new Scalar(145, 100, 50);
+//        Scalar highHSV = new Scalar(165, 255, 255);
+
+        // orange (also detects red because orange is not cool)
+//        Scalar lowHSV = new Scalar(0, 100, 20);
+//        Scalar highHSV = new Scalar(30, 255, 255);
+
+        // blue (tape used on the filed)
+//        Scalar lowHSV = new Scalar(90, 40, 50);
+//        Scalar highHSV = new Scalar(130, 255, 255);
+//
+        // green and yellow
+//        Scalar lowHSV = new Scalar(22, 100, 70);
+//        Scalar highHSV = new Scalar(80, 255, 255);
+
+        // last match
+        Scalar lowHSV = new Scalar(22, 50, 60);
+        Scalar highHSV = new Scalar(80, 255, 255);
 
         Mat temp = new Mat();
 
